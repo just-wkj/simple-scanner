@@ -47,7 +47,6 @@ import com.google.zxing.BarcodeFormat;
 import com.google.zxing.BinaryBitmap;
 import com.google.zxing.DecodeHintType;
 import com.google.zxing.MultiFormatReader;
-import com.google.zxing.NotFoundException;
 import com.google.zxing.PlanarYUVLuminanceSource;
 import com.google.zxing.Result;
 import com.google.zxing.common.HybridBinarizer;
@@ -58,6 +57,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.EnumMap;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -232,7 +232,7 @@ public class MainActivity extends Activity {
                 BarcodeFormat.CODABAR,
                 BarcodeFormat.ITF
         );
-        Map<DecodeHintType, Object> hints = new EnumMap<DecodeHintType, Object>(DecodeHintType.class);
+        Map<DecodeHintType, Object> hints = new HashMap<DecodeHintType, Object>();
         hints.put(DecodeHintType.POSSIBLE_FORMATS, formats);
         hints.put(DecodeHintType.TRY_HARDER, Boolean.TRUE);
         reader.setHints(hints);
@@ -576,7 +576,7 @@ public class MainActivity extends Activity {
         BinaryBitmap bitmap = new BinaryBitmap(new HybridBinarizer(source));
         try {
             return reader.decodeWithState(bitmap);
-        } catch (NotFoundException e) {
+        } catch (Exception e) {
             return null;
         } finally {
             reader.reset();
