@@ -1,0 +1,36 @@
+# Build outputs
+/build/
+/out/
+/captures/
+/.externalNativeBuild/
+/.cxx/
+*.apk
+*.idsig
+*.dex
+*.class
+*.jar
+!/libs/*.jar
+
+# Android/Gradle local state
+.gradle/
+local.properties
+output.json
+
+# IDE/editor files
+.idea/
+*.iml
+.vscode/
+
+# Signing keys and local secrets
+*.jks
+*.keystore
+*.p12
+*.pem
+
+# Logs/OS files
+*.log
+*.hprof
+.DS_Store
+
+# Optional Firebase/Google local config
+google-services.json
